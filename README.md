@@ -69,8 +69,8 @@ Run this command to record a 5 sec audio and play it back
 ```
 cd ~/
 arecord --duration 5 --rate 16000 --format S16_LE test.wav && aplay ./test.wav
-You should hear the recorded audio, then setup is good and you can move forward.
 ```
+You should hear the recorded audio, then setup is good and you can move forward.
 
 ## 3. Setup Google Assistant.
 
