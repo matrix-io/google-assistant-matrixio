@@ -48,7 +48,7 @@ def process_device_actions(event, device_id):
 
 def set_everloop_color(red, green, blue, white):
     color_array = bytearray()
-    for x in range(0,34):
+    for x in range(0,35):
         color_array += bytearray([red, green, blue, white])
     with open('/dev/matrixio_everloop','wb') as bin_file:
         bin_file.write(color_array)
@@ -68,43 +68,19 @@ def process_event(event, device_id):
         set_everloop_color(0,0,0,10) # blue
     if(event.type == EventType.ON_CONVERSATION_TURN_STARTED):
         set_everloop_color(0,10,0,0) # green
+        print()
     if(event.type == EventType.ON_CONVERSATION_TURN_TIMEOUT):
         set_everloop_color(0,0,0,10) # blue
-        
-    # if(event.type == EventType.ON_END_OF_UTTERANCE):
-        
-    # if(event.type == EventType.ON_RECOGNIZING_SPEECH_FINISHED):
-        
     if(event.type == EventType.ON_RESPONDING_STARTED):
         set_everloop_color(0,0,10,0) # white
-        
-    # if(event.type == EventType.ON_RESPONDING_FINISHED):
-        set_everloop_color(0,0,0,10) # blue
-        
-    # if(event.type == EventType.ON_NO_RESPONSE):
-        
     if(event.type == EventType.ON_CONVERSATION_TURN_FINISHED):
         set_everloop_color(0,0,0,10) # blue
         
-    # if(event.type == EventType.ON_ALERT_STARTED):
-        
-    # if(event.type == EventType.ON_ALERT_FINISHED):
-        
-    # if(event.type == EventType.ON_ASSISTANT_ERROR):
-        
-    # # if(event.type == EventType.ON_MUTED_CHANGED):
-        
-    # if(event.type == EventType.ON_DEVICE_ACTION):
+    print(event)
 
-    
-    # if event.type == EventType.ON_CONVERSATION_TURN_STARTED:
-    #     print()
-    
-    print(event.type)
-
-    # if (event.type == EventType.ON_CONVERSATION_TURN_FINISHED and
-    #         event.args and not event.args['with_follow_on_turn']):
-    #     print()
+    if (event.type == EventType.ON_CONVERSATION_TURN_FINISHED and
+            event.args and not event.args['with_follow_on_turn']):
+        print()
     if event.type == EventType.ON_DEVICE_ACTION:
         for command, params in process_device_actions(event, device_id):
             print('Do command', command, 'with params', str(params))
