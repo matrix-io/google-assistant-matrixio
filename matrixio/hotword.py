@@ -48,7 +48,7 @@ def process_device_actions(event, device_id):
 
 def set_everloop_color(red, green, blue, white):
     color_array = bytearray()
-    for x in range(0,34):
+    for x in range(0,35):
         color_array += bytearray([red, green, blue, white])
     with open('/dev/matrixio_everloop','wb') as bin_file:
         bin_file.write(color_array)
