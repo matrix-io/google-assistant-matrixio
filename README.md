@@ -41,7 +41,7 @@ After rebooting go and clone, build, and install the kernel repository following
 ```
 # Clone, build and install kernel modules
 git clone https://github.com/matrix-io/matrixio-kernel-modules
-cd matrixio-kernel-modules
+cd matrixio-kernel-modules/src
 make && make install
 ```
 
